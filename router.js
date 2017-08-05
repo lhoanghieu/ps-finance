@@ -4,6 +4,8 @@ const jsdom = require('jsdom');
 const jsdomo = require('jsdom/lib/old-api');
 const { JSDOM } = jsdom;
 
+const model = require('./service/firebase/model');
+
 module.exports = {
     vcbf_tbf: function(req, res, next){
         const vcbf_balance = 'https://www.vcbf.com/quy-mo/gia-tri-tai-san-rong-nav-cua-cac-quy-mo/quy-dau-tu-can-bang-chien-luoc-vcbf-1/';
@@ -20,8 +22,10 @@ module.exports = {
                 }
             })
         });
+        res.send({errors: false, message: 'successful'});
         next();
     },
+
     vcbf_bcf: function(req, res, next){
         const vcbf_stock   = 'https://www.vcbf.com/quy-mo/gia-tri-tai-san-rong-nav-cua-cac-quy-mo/quy-dau-tu-co-phieu-hang-dau-vcbf-1/';
 
@@ -37,6 +41,14 @@ module.exports = {
                 }
             })
         });
+        res.send({errors: false, message: 'successful'});
+        next();
+    },
+
+    test_firebase: function(req, res, next){
+        // bcf, tbf
+        model.add('18,341.30', '30,122.64');
+        res.send({errors: false, message: 'successful'});
         next();
     }
 };
