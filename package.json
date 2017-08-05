@@ -1,0 +1,9 @@
+{
+  "name": "personal-finance",
+  "version": "0.0.1",
+  "dependencies": {
+    "jsdom": "^11.1.0",
+    "request": "^2.81.0",
+    "restify": "^5.0.1"
+  }
+}
